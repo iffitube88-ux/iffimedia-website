@@ -1,0 +1,47 @@
+/* IFFI MEDIA reusable clinic-showcase refinements */
+.brand-logo-demo{width:44px;height:44px;display:inline-flex;flex:none;align-items:center;justify-content:center}
+.brand-logo-demo svg{width:44px;height:44px}
+.service-photo.real-service-photo{height:174px;min-height:174px;background-size:cover;background-position:center;position:relative;border-radius:20px 20px 16px 16px;transition:transform .65s ease,filter .4s ease}
+.service-card{overflow:hidden;min-height:430px;display:flex;flex-direction:column;transition:transform .45s cubic-bezier(.22,.8,.2,1),box-shadow .45s ease}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 24px 46px -25px rgba(122,53,25,.35)}
+.service-card .service-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(26,24,24,.30),transparent 60%);pointer-events:none}
+.service-card .service-info{flex:1;display:flex;flex-direction:column}
+.service-card .service-info .card-foot{margin-top:auto}
+.service-card .service-info h3{font-size:1.16rem}
+.service-card .service-photo .photo-mark{position:absolute;bottom:10px;left:12px;z-index:2;letter-spacing:.025em;font-weight:600;background:rgba(255,255,255,.87);color:#6d3928;padding:5px 9px;border-radius:30px;font-size:10px;backdrop-filter:blur(9px)}
+.services-note{font-size:.81rem;color:#897f78}
+.map-panel{background:#fff3ec!important}
+.map-demo-placeholder{height:100%;min-height:365px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:50px;color:#a64a28;background:radial-gradient(ellipse at 70% 22%,rgba(255,115,42,.13),transparent 45%),repeating-linear-gradient(0deg,transparent 0 48px,rgba(246,141,83,.065) 49px 50px),repeating-linear-gradient(90deg,transparent 0 48px,rgba(246,141,83,.065) 49px 50px)}
+.map-demo-placeholder>span{font-size:68px;line-height:1.2}
+.map-demo-placeholder h3{font-size:28px;color:#2f2c2a;margin:10px 0}
+.map-demo-placeholder p{max-width:350px;line-height:1.7}
+.reviews-generic{max-width:1160px;margin:0 auto;padding:85px 30px;display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:center}
+.reviews-generic h2{font-size:clamp(2rem,4vw,3.5rem);letter-spacing:-.055em;line-height:1.13}
+.reviews-generic>p{max-width:480px;color:#756c68;line-height:1.65;font-size:1.03rem}
+.reviews-generic>.btn{justify-self:start}
+.reviews-glass{background:#fff4ed;border:1px solid #f3d8c9;border-radius:30px;padding:50px 32px;text-align:center;grid-column:2;grid-row:1 / span 4;min-height:290px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:13px;box-shadow:0 18px 45px -26px rgba(100,40,12,.19)}
+.reviews-placeholder-star{font-size:37px;letter-spacing:.11em;color:#ff722e}
+.reviews-glass strong{font-size:23px;line-height:1.25}
+.reviews-glass span{font-size:13px;color:#857972}
+.booking-preview-overlay[hidden]{display:none!important}
+.booking-preview-overlay{position:fixed;z-index:1000;inset:0;background:rgba(22,24,26,.68);backdrop-filter:blur(8px);display:grid;place-items:center;padding:16px;overflow-y:auto}
+.booking-preview-card{background:white;border-radius:28px;padding:36px;width:min(100%,590px);position:relative;box-shadow:0 22px 80px rgba(0,0,0,.25)}
+.booking-preview-card h2{font-size:34px;margin:14px 0 9px;line-height:1.15}
+.booking-preview-card>p{color:#69605b;line-height:1.55}
+.booking-preview-card pre{margin:18px 0;padding:20px;background:#fff2e9;white-space:pre-wrap;overflow-wrap:anywhere;border-radius:15px;line-height:1.65;font:500 14px/1.55 'DM Sans',sans-serif;color:#39302b}
+.booking-preview-card .preview-close{position:absolute;right:24px;top:21px;font-size:28px;color:#333;background:#fff1e9;border-radius:50%;height:38px;width:38px;cursor:pointer}
+.booking-preview-card .preview-disclaimer{font-size:12px;font-weight:600;color:#955339}
+.modal-open{overflow:hidden}
+@media(max-width:900px){.reviews-generic{grid-template-columns:1fr;padding:60px 20px}.reviews-glass{grid-row:auto;grid-column:auto}}
+@media(max-width:640px){.service-photo.real-service-photo{height:200px}.service-card{min-height:0}.booking-preview-card{padding:28px 20px}.booking-preview-card h2{font-size:29px}}
+
+.nav-links a{color:#34302e!important;text-decoration:none}.nav-links a:hover,.nav-links a.current{color:#ff6b22!important}
+.service-photo.real-service-photo{background-color:#fce9dd;background-repeat:no-repeat}
+.service-card:nth-child(3n+2) .service-photo{background-color:#f4d6cd}
+.service-card:nth-child(4n) .service-photo{background-color:#fbe0d0}
+.hero-photo.photo-fallback{position:relative;background:linear-gradient(135deg,#ffd5b8 0%,#f9a46f 50%,#ef7232 100%)}
+.fallback-image-art{display:none;position:absolute;inset:0;align-items:center;justify-content:center;flex-direction:column;text-align:center;gap:12px;padding:30px}
+.hero-photo.photo-fallback .fallback-image-art{display:flex}
+.line-tooth{font-size:130px;line-height:1;color:rgba(255,255,255,.55);text-shadow:0 8px 45px rgba(155,50,2,.16)}
+.fallback-title{color:#fff;font-size:30px;font-family:Manrope,sans-serif;font-weight:800;letter-spacing:-.05em}
+.fallback-sub{color:rgba(255,255,255,.84);font-size:13px;letter-spacing:.04em}
