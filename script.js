@@ -34,7 +34,7 @@
     modal.querySelector('.preview-close')?.focus();
   }
   function closeModal(){if(modal)modal.hidden=true;document.body.classList.remove('modal-open');}
-  const sampleMessage='Hello Your Clinic! 👋\\n\\nI would like to enquire about a consultation.\\nService: Dental checkup (example)\\nPreferred date: To be confirmed\\nPreferred time: To be confirmed\\n\\nCould you please let me know your availability and fees?';
+  const sampleMessage='Hello Your Clinic! 👋\n\nI would like to enquire about a consultation.\nService: Dental checkup (example)\nPreferred date: To be confirmed\nPreferred time: To be confirmed\n\nCould you please let me know your availability and fees?';
   document.querySelectorAll('[data-demo-whatsapp]').forEach(button=>button.addEventListener('click',()=>openModal(sampleMessage)));
   modal?.querySelectorAll('.preview-close,.preview-done').forEach(b=>b.addEventListener('click',closeModal));
   modal?.addEventListener('click',e=>{if(e.target===modal)closeModal();});
