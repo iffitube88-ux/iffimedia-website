@@ -26,7 +26,16 @@
   }));
   const modal=document.querySelector('#booking-preview');
   const pre=document.querySelector('#preview-message');
+  function openModal(message){
+    if(!modal||!pre)return;
+    pre.textContent=message;
+    modal.hidden=false;
+    document.body.classList.add('modal-open');
+    modal.querySelector('.preview-close')?.focus();
+  }
   function closeModal(){if(modal)modal.hidden=true;document.body.classList.remove('modal-open');}
+  const sampleMessage='Hello Your Clinic! 👋\\n\\nI would like to enquire about a consultation.\\nService: Dental checkup (example)\\nPreferred date: To be confirmed\\nPreferred time: To be confirmed\\n\\nCould you please let me know your availability and fees?';
+  document.querySelectorAll('[data-demo-whatsapp]').forEach(button=>button.addEventListener('click',()=>openModal(sampleMessage)));
   modal?.querySelectorAll('.preview-close,.preview-done').forEach(b=>b.addEventListener('click',closeModal));
   modal?.addEventListener('click',e=>{if(e.target===modal)closeModal();});
   document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
@@ -38,10 +47,8 @@
     if(d<localToday()){status.textContent='Please select today or a future date.';date?.focus();return;}
     const fields=['service','date','time','name','contact'];
     const values=Object.fromEntries(fields.map(k=>[k,String(data.get(k)||'').trim()]));
-    pre.textContent=`Hello [Your Clinic Name]!\n\nI would like to request an appointment.\n\nService: ${values.service}\nPreferred date: ${values.date}\nPreferred time: ${values.time}\nName: ${values.name}\nCallback number: ${values.contact}\n\nCould you confirm availability and price?`;
-    modal.hidden=false;document.body.classList.add('modal-open');
-    status.textContent='Demo generated locally. Your details were not sent anywhere.';
-    modal.querySelector('.preview-close')?.focus();
+    openModal(`Hello Your Clinic! 👋\n\nI would like to request an appointment.\n\nService: ${values.service}\nPreferred date: ${values.date}\nPreferred time: ${values.time}\nName: ${values.name}\nCallback number: ${values.contact}\n\nCould you confirm availability and price?`);
+    status.textContent='Demo WhatsApp conversation generated locally. No message or personal information was sent.';
   });
   if('IntersectionObserver'in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
     const items=document.querySelectorAll('[data-reveal]');items.forEach(n=>n.classList.add('reveal-ready'));
