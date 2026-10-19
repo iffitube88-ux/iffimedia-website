@@ -160,8 +160,7 @@ html,body{overflow-x:clip}
       `Preferred days: ${data.get('day')}`,
       String(data.get('message') || '').trim() ? `My questions: ${String(data.get('message')).trim()}` : '',
       'Could you please share the available classes, timings and fees?'
-    ].filter(Boolean).join('
-');
+    ].filter(Boolean).join('\n');
     let copied = false;
     try {
       await navigator.clipboard.writeText(text);
@@ -176,9 +175,7 @@ html,body{overflow-x:clip}
     feedback.hidden = false;
     feedback.textContent = copied
       ? 'Enquiry copied. Instagram will open so you can paste and send it directly. No booking has been confirmed.'
-      : `Copy this message and send it to @fit_hub_karate on Instagram:
-
-${text}`;
+      : `Copy this message and send it to @fit_hub_karate on Instagram:\n\n${text}`;
     const link = document.createElement('a');
     link.href = 'https://ig.me/m/fit_hub_karate';
     link.target = '_blank';link.rel = 'noopener noreferrer';
