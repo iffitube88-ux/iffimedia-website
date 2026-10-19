@@ -38,6 +38,112 @@ html,body{overflow-x:clip}
 .gallery-item img{object-position:center 50%}
 .gallery-item.tall img{object-position:center 37%}
 @media (prefers-reduced-motion:reduce){.program-card:hover .program-img img,.gallery-item:hover img{transform:none}}
+
+/* FIT HUB 2026 STACKED MOTION — native sticky scroll, no scroll hijacking */
+:root{--stack-top:clamp(80px,9.5vh,104px)}
+html{scroll-padding-top:110px}
+.program-section{position:relative;isolation:isolate;overflow:visible}
+.program-section .wrap{overflow:visible}
+.program-grid{display:block!important;position:relative;isolation:isolate;gap:0!important;perspective:none}
+.program-card,.program-card[data-reveal].is-visible{
+ position:sticky!important;top:var(--stack-top);min-height:0!important;
+ height:clamp(495px,calc(100svh - var(--stack-top) - 25px),790px);
+ width:100%;margin:0 0 clamp(72px,12svh,170px);
+ transform:none!important;overflow:hidden;isolation:isolate;
+ border:1px solid rgba(255,255,255,.23);border-radius:22px;
+ box-shadow:0 30px 75px rgba(0,0,0,.42);transition:border-color .35s ease,box-shadow .45s ease;
+ opacity:1!important;touch-action:pan-y;
+ backface-visibility:hidden
+}
+.program-card:nth-child(1){z-index:1}
+.program-card:nth-child(2){z-index:2}
+.program-card:nth-child(3){z-index:3;margin-bottom:clamp(28px,5vh,60px)}
+.program-card::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.05)}
+.program-card:hover,.program-card.is-stack-active{transform:none!important;border-color:rgba(237,37,43,.75);box-shadow:0 35px 95px rgba(0,0,0,.62),0 0 0 1px rgba(237,37,43,.14)}
+.program-card .program-img{inset:0}
+.program-card .program-img img{width:100%;height:100%;object-fit:cover;object-position:center 42%;transition:transform 1.2s cubic-bezier(.22,1,.36,1)}
+.program-card .program-img-overlay{background:linear-gradient(90deg,rgba(6,6,7,.43),rgba(6,6,7,.02) 72%),linear-gradient(0deg,rgba(4,4,5,.96) 0%,rgba(4,4,5,.5) 32%,transparent 67%,rgba(4,4,5,.35) 100%)}
+.program-card:hover .program-img img{transform:scale(1.035)}
+.program-card .program-top{z-index:2;padding:clamp(21px,3vw,42px)}
+.program-card .program-top span:first-child{font-size:clamp(11px,1vw,14px);letter-spacing:.2em}
+.program-card .program-info{z-index:2;max-width:680px;padding:0 clamp(24px,4.2vw,68px) clamp(30px,4.5vw,72px)}
+.program-card .program-info h3{font-size:clamp(90px,12vw,185px);line-height:.82;letter-spacing:-.035em;max-width:100%;overflow-wrap:normal}
+.program-card .program-info p{max-width:550px;font-size:clamp(15px,1.45vw,20px);line-height:1.65}
+.program-card .program-link{margin-top:12px;padding:11px 0;min-height:44px}
+.program-grid::after{content:"";display:block;height:1px}
+.program-note{position:relative;z-index:4;background:#09090a;padding:10px 0 0}
+.program-section .section-head{position:relative;z-index:5}
+.about-grid{grid-template-columns:minmax(290px,.72fr) minmax(0,1.25fr)!important;align-items:center;gap:clamp(30px,6vw,110px)}
+.about-reel{position:relative;isolation:isolate;width:min(100%,440px);height:clamp(420px,42vw,650px);overflow:hidden;border:1px solid rgba(255,255,255,.17);border-radius:24px;box-shadow:0 25px 95px #0009,0 0 50px rgba(237,37,43,.06);background:#0d0d0e}
+.about-reel .reel-poster,.reel-frame{position:absolute;inset:0}
+.about-reel .reel-poster img{width:100%;height:100%;object-fit:cover;filter:brightness(.75)}
+.reel-frame{inset:0;z-index:1;pointer-events:none!important;overflow:hidden}
+.reel-frame iframe{height:100%;width:100%;min-height:100%;border:0;pointer-events:none!important;display:block;background:transparent}
+.about-reel::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(0,0,0,.56),transparent 28%,transparent 60%,rgba(0,0,0,.82));pointer-events:none}
+.reel-label{position:absolute;z-index:3;top:22px;left:22px;right:22px;color:white;display:flex;align-items:center;gap:9px;font-size:10px;font-weight:800;letter-spacing:.11em;pointer-events:none}
+.reel-label-end{margin-left:auto;color:#f0dddd;font-size:9px}
+.reel-pulse{display:block;width:8px;height:8px;background:#ed252b;border-radius:50%;box-shadow:0 0 16px #ed252b;animation:breathe 2s ease-in-out infinite}
+.reel-watch{position:absolute;z-index:4;bottom:22px;left:20px;right:20px;display:flex;align-items:center;gap:12px;justify-content:flex-start;background:rgba(20,20,21,.75);backdrop-filter:blur(16px);color:#fff;border:1px solid #ffffff35;border-radius:15px;padding:14px 17px;font-size:11px;font-weight:800;letter-spacing:.09em;transition:background .25s,transform .3s}
+.reel-watch:hover{background:rgba(237,37,43,.82);transform:translateY(-2px)}
+.reel-watch span:last-child{margin-left:auto;font-size:17px}
+.reel-play-icon{font-size:12px;color:#ff575d}
+.about-grid>div:nth-child(2){min-width:0}
+.about-grid .display-heading{font-size:clamp(62px,7.4vw,125px)}
+.hero-type-line{white-space:nowrap;display:inline-flex;align-items:center;max-width:100%}
+.type-live{display:inline-block}
+.type-cursor{display:inline-block;width:clamp(3px,.4vw,6px);height:.76em;margin-left:3px;background:var(--red);vertical-align:middle;animation:type-caret-pulse .85s steps(1,end) infinite}
+@keyframes type-caret-pulse{50%{opacity:0}}
+.value-strip{overflow:visible}
+.value{transform-origin:20% 75%;transition:border-color .4s,background .4s}
+.value-strip.is-in-view .value{animation:value-pop-in .95s cubic-bezier(.16,1,.3,1) both}
+.value-strip.is-in-view .value:nth-child(1){animation-delay:.04s}
+.value-strip.is-in-view .value:nth-child(2){animation-delay:.17s}
+.value-strip.is-in-view .value:nth-child(3){animation-delay:.3s}
+.value-strip.is-in-view .value:nth-child(4){animation-delay:.43s}
+.value:hover{background:rgba(255,255,255,.045);border-color:#ed252b}
+@keyframes value-pop-in{from{opacity:0;transform:translate3d(0,34px,0) scale(.94);filter:blur(5px)}to{opacity:1;transform:translate3d(0,0,0) scale(1);filter:blur(0)}}
+.banner-bg{background-image:linear-gradient(90deg,#070709ee 0%,#090909ae 48%,#09090930 100%),url('https://img.magicpin.com/8646754_store_images_1.webp')!important;background-position:center,center 44%}
+@media(max-width:990px){
+ .about-grid{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)!important;gap:28px}
+ .about-reel{height:clamp(390px,62vw,520px)}
+ .about-grid .display-heading{font-size:clamp(58px,8vw,82px)}
+ .about-bottom{display:block}
+ .program-card .program-info h3{font-size:clamp(77px,13vw,135px)}
+}
+@media(max-width:700px){
+ :root{--stack-top:82px}
+ .program-section{padding-top:92px}
+ .program-section .wrap{width:calc(100% - 24px)}
+ .program-section .section-head{padding:0 10px;margin-bottom:34px}
+ .program-section .section-head .display-heading{font-size:clamp(60px,14vw,98px)}
+ .program-card{height:clamp(445px,calc(100svh - 100px),690px);border-radius:18px;margin-bottom:clamp(68px,12svh,130px)}
+ .program-card .program-top{padding:21px}
+ .program-card .program-img img{object-position:center center}
+ .program-card .program-info{padding:0 24px 30px;max-width:100%}
+ .program-card .program-info h3{font-size:clamp(72px,16vw,105px)}
+ .program-card .program-info p{font-size:14px;line-height:1.55}
+ .program-card .program-link{font-size:11px}
+ .about-grid{display:flex!important;flex-direction:column;gap:43px}
+ .about-reel{width:min(100%,440px);height:clamp(380px,120vw,580px);margin:0 auto}
+ .about-grid>div:nth-child(2){width:100%}
+ .about-grid .display-heading{font-size:clamp(58px,13vw,92px)}
+ .about-bottom p{line-height:1.75}
+ .reel-label-end{font-size:8px}
+ .hero-type-line{font-size:inherit}
+ .value-strip.is-in-view .value{animation-duration:.75s}
+}
+@media(max-width:380px){
+ .program-card .program-info h3{font-size:clamp(62px,15vw,84px)}
+ .program-card .program-info p{font-size:13px}
+ .about-reel{height:450px}
+}
+@media(prefers-reduced-motion:reduce){
+ .type-cursor{animation:none;opacity:0}
+ .value-strip.is-in-view .value{animation:none!important}
+ .program-card,.program-card:hover{transition:none!important;transform:none!important}
+ .reel-pulse{animation:none}
+}
+
 </style>
   <title>FIT HUB KARATE — Discipline in Motion</title>
 </head>
@@ -58,7 +164,7 @@ html,body{overflow-x:clip}
         <div class="hero-copy" data-reveal>
           <div class="eyebrow"><i></i> AJMAN, UAE <span class="eyebrow-slash">//</span> FIT HUB KARATE</div>
           <p class="hero-overline">MORE THAN A SPORT. A WAY FORWARD.</p>
-          <h1 id="hero-title">DISCIPLINE<br><em>IN MOTION<span class="period">.</span></em></h1>
+          <h1 id="hero-title" aria-label="DISCIPLINE IN MOTION.">DISCIPLINE<br><em class="hero-type-line"><span id="heroType" class="type-live" aria-hidden="true">IN MOTION.</span><span class="type-cursor" aria-hidden="true"></span></em></h1>
           <p class="hero-description">Build focus. Find confidence. Keep moving forward. Discover karate and kickboxing at Fit Hub Karate.</p>
           <div class="hero-actions"><button type="button" class="primary-btn book-trigger">EXPLORE YOUR FIRST CLASS <span>↗</span></button><a class="text-link" href="#moments">WATCH THE ENERGY <span>↓</span></a></div>
           <div class="hero-footnote"><span class="line-dot"></span><span>REAL DOJO MOMENTS<br><b>FROM @FIT_HUB_KARATE</b></span></div>
@@ -76,17 +182,22 @@ html,body{overflow-x:clip}
     </section>
     <div class="ticker" aria-hidden="true"><div class="ticker-track">FOCUS <span>✦</span> DISCIPLINE <span>✦</span> CONFIDENCE <span>✦</span> PROGRESS <span>✦</span> FOCUS <span>✦</span> DISCIPLINE <span>✦</span> CONFIDENCE <span>✦</span> PROGRESS <span>✦</span></div></div>
     <section class="about-section section-pad" id="about">
-      <div class="wrap about-grid"><div class="section-label" data-reveal><span class="section-index">01 / THE DOJO</span><div class="section-symbol">✳</div></div>
+      <div class="wrap about-grid"><div class="about-reel" data-reveal aria-label="Fit Hub Karate training reel">
+  <div class="reel-poster" aria-hidden="true"><img src="https://img.magicpin.com/8646754_store_images_4.webp" alt="" loading="lazy" referrerpolicy="no-referrer"></div>
+  <div class="reel-frame" aria-hidden="true"><iframe title="Fit Hub Karate training Instagram reel" src="https://www.instagram.com/reel/Db0W7uLo7tu/embed/" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" tabindex="-1" scrolling="no" allow="encrypted-media; picture-in-picture" ></iframe></div>
+  <div class="reel-label"><span class="reel-pulse"></span> 01 / THE DOJO <span class="reel-label-end">REAL TRAINING MOMENTS</span></div>
+  <a class="reel-watch" href="https://www.instagram.com/reel/Db0W7uLo7tu/" target="_blank" rel="noopener noreferrer" aria-label="Watch Fit Hub Karate training reel on Instagram"><span class="reel-play-icon">▶</span> WATCH ORIGINAL REEL <span aria-hidden="true">↗</span></a>
+</div>
         <div data-reveal><div class="kicker">NOT JUST A CLASS.</div><h2 class="display-heading">A PLACE TO<br><em>BECOME MORE.</em></h2><div class="about-bottom"><p>Every training session is a chance to get a little stronger, sharper and more confident. At Fit Hub Karate, the journey is made one move at a time.</p><a class="round-arrow" href="#programs" aria-label="Explore the programs">↘</a></div></div>
       </div>
       <div class="wrap value-strip"><div class="value" data-reveal><span>01</span><b>FOCUS</b><small>Practice with intention</small></div><div class="value" data-reveal><span>02</span><b>CONFIDENCE</b><small>Find your own strength</small></div><div class="value" data-reveal><span>03</span><b>DISCIPLINE</b><small>Progress through practice</small></div><div class="value" data-reveal><span>04</span><b>COMMUNITY</b><small>Train alongside others</small></div></div>
     </section>
     <section class="program-section section-pad" id="programs">
       <div class="wrap"><div class="section-head" data-reveal><div><span class="section-index">02 / FIND YOUR FIGHT</span><h2 class="display-heading">PICK YOUR <em>PATH.</em></h2></div><p>Choose your starting point. Training options and class availability can be confirmed directly with the centre.</p></div>
-      <div class="program-grid">
-        <article class="program-card" data-reveal data-program="Karate"><div class="program-img"><img src="https://img.magicpin.com/8646754_store_images_4.webp" referrerpolicy="no-referrer" alt="Young student and instructor at Fit Hub Karate" loading="lazy"/><div class="program-img-overlay"></div></div><div class="program-top"><span>01 / MARTIAL ARTS</span><span class="program-chevron">↗</span></div><div class="program-info"><h3>KARATE</h3><p>Technique. Control. Commitment. Develop your abilities one session at a time.</p><button class="program-link" type="button">ENQUIRE ABOUT KARATE ↗</button></div></article>
-        <article class="program-card" data-reveal data-program="Kickboxing"><div class="program-img"><img src="https://img.magicpin.com/8646754_store_images_0.webp" referrerpolicy="no-referrer" alt="Martial arts striking practice at Fit Hub Karate" loading="lazy"/><div class="program-img-overlay"></div></div><div class="program-top"><span>02 / STRIKING</span><span class="program-chevron">↗</span></div><div class="program-info"><h3>KICKBOXING</h3><p>Movement. Energy. Precision. Explore training built around practice and progression.</p><button class="program-link" type="button">ENQUIRE ABOUT KICKBOXING ↗</button></div></article>
-        <article class="program-card" data-reveal data-program="Introductory session"><div class="program-img"><img src="https://img.magicpin.com/8646754_store_images_3.webp" referrerpolicy="no-referrer" alt="Real indoor reception and facilities at Fit Hub Karate" loading="lazy"/><div class="program-img-overlay"></div></div><div class="program-top"><span>03 / GET STARTED</span><span class="program-chevron">↗</span></div><div class="program-info"><h3>NEW HERE?</h3><p>Never stepped on the mat? Send an enquiry to ask which class is right for you.</p><button class="program-link" type="button">ASK ABOUT GETTING STARTED ↗</button></div></article>
+      <div class="program-grid" aria-label="Explore training programs with overlapping cards">
+        <article class="program-card" data-program="Karate"><div class="program-img"><img src="https://img.magicpin.com/8646754_store_images_4.webp" referrerpolicy="no-referrer" alt="Young student and instructor at Fit Hub Karate" loading="lazy"/><div class="program-img-overlay"></div></div><div class="program-top"><span>01 / MARTIAL ARTS</span><span class="program-chevron">↗</span></div><div class="program-info"><h3>KARATE</h3><p>Technique. Control. Commitment. Develop your abilities one session at a time.</p><button class="program-link" type="button">ENQUIRE ABOUT KARATE ↗</button></div></article>
+        <article class="program-card" data-program="Kickboxing"><div class="program-img"><img src="https://img.magicpin.com/8646754_store_images_0.webp" referrerpolicy="no-referrer" alt="Martial arts striking practice at Fit Hub Karate" loading="lazy"/><div class="program-img-overlay"></div></div><div class="program-top"><span>02 / STRIKING</span><span class="program-chevron">↗</span></div><div class="program-info"><h3>KICKBOXING</h3><p>Movement. Energy. Precision. Explore training built around practice and progression.</p><button class="program-link" type="button">ENQUIRE ABOUT KICKBOXING ↗</button></div></article>
+        <article class="program-card" data-program="Introductory session"><div class="program-img"><img src="https://img.magicpin.com/8646754_store_images_3.webp" referrerpolicy="no-referrer" alt="Real indoor reception and facilities at Fit Hub Karate" loading="lazy"/><div class="program-img-overlay"></div></div><div class="program-top"><span>03 / GET STARTED</span><span class="program-chevron">↗</span></div><div class="program-info"><h3>NEW HERE?</h3><p>Never stepped on the mat? Send an enquiry to ask which class is right for you.</p><button class="program-link" type="button">ASK ABOUT GETTING STARTED ↗</button></div></article>
       </div>
       <div class="program-note"><span>↳</span> Exact age groups, fees and schedules are confirmed by Fit Hub Karate. No unverified details have been added.</div>
       </div>
@@ -217,6 +328,61 @@ html,body{overflow-x:clip}
     });
   }
 })();
+
+
+  // FIT HUB 2026 STACKED MOTION: native sticky layers; preserve inertial touch scrolling.
+  (() => {
+    const typeTarget = document.getElementById('heroType');
+    const text = 'IN MOTION.';
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (typeTarget && !reduced) {
+      typeTarget.textContent = '';
+      let started = false;
+      const type = () => {
+        if (started) return;
+        started = true;
+        let n = 0;
+        const step = () => {
+          if (!typeTarget.isConnected) return;
+          typeTarget.textContent = text.slice(0, ++n);
+          if (n < text.length) window.setTimeout(step, 105);
+        };
+        window.setTimeout(step, 260);
+      };
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+          if (entries.some(x => x.isIntersecting)) { type(); observer.disconnect(); }
+        }, {threshold:.1});
+        observer.observe(typeTarget);
+      } else { type(); }
+    }
+    const values = document.querySelector('.value-strip');
+    if (values && 'IntersectionObserver' in window && !reduced) {
+      const valueObserver = new IntersectionObserver(entries => {
+        for (const e of entries) {
+          if (e.isIntersecting) values.classList.add('is-in-view');
+          else values.classList.remove('is-in-view');
+        }
+      }, {threshold:.14});
+      valueObserver.observe(values);
+    }
+    const cards = [...document.querySelectorAll('.program-card')];
+    if (cards.length) {
+      let raf = 0;
+      const updateCards = () => {
+        const threshold = Math.max(70, Math.min(window.innerHeight*.095,104))+24;
+        let active=-1;
+        cards.forEach((card,i) => {
+          if (card.getBoundingClientRect().top <= threshold) active=i;
+        });
+        cards.forEach((card,i) => card.classList.toggle('is-stack-active',i===active));
+        raf=0;
+      };
+      window.addEventListener('scroll', () => { if(!raf) raf=requestAnimationFrame(updateCards); }, {passive:true});
+      window.addEventListener('resize', updateCards, {passive:true});
+      updateCards();
+    }
+  })();
 
 </script>
 </body>
